@@ -1,249 +1,151 @@
-# 🔥 PROMETHEUS AI — v12.0 Groq Edition
+# PROMETHEUS AI
 
-> Self-improving AI agent with a beautiful web UI, powered entirely by **Groq** (free).  
-> One API key. Zero paid tiers needed.
+An AI-powered web application for running Python code, researching topics, and building automated agents — powered entirely by the free Groq API.
 
-![PROMETHEUS AI](https://img.shields.io/badge/Groq-Llama_3.3_70B-0085FF?style=for-the-badge&logo=lightning&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3.9+-090B1E?style=for-the-badge&logo=python&logoColor=white)
-![Flask](https://img.shields.io/badge/Flask-3.0-F9FAFC?style=for-the-badge&logo=flask&logoColor=black)
-![License](https://img.shields.io/badge/License-MIT-9360FF?style=for-the-badge)
-
----
-
-## ✨ Features
-
-| Feature | Description |
-|---------|-------------|
-| 🤖 **AI Chat** | Run any Python task with full web UI |
-| 📊 **4 Simulation Templates** | Monte Carlo, Fibonacci, Physics, Compound Interest |
-| 🔬 **Deep Research** | Web search + AI synthesis |
-| 🤖 **Build Agents** | Generate specialized Python sub-agents |
-| 🧠 **Persistent Memory** | Never repeat the same computation twice |
-| 🎨 **Beautiful UI** | Script.io-inspired dark/light design |
-| 📱 **Responsive** | Works on desktop, tablet, mobile |
-| ⚡ **Groq-Only** | Free, fast, no other API keys needed |
+![Groq](https://img.shields.io/badge/Groq-Llama_3.3_70B-0085FF?style=flat-square)
+![Python](https://img.shields.io/badge/Python-3.12+-090B1E?style=flat-square&logo=python)
+![Flask](https://img.shields.io/badge/Flask-3.x-black?style=flat-square&logo=flask)
+![License](https://img.shields.io/badge/License-MIT-9360FF?style=flat-square)
 
 ---
 
-## 🚀 Quick Setup
+## What it does
 
-### Step 1 — Clone the repo
+**Execute mode** — Describe a computation or simulation in plain English. The agent writes Python code, runs it in a subprocess, and returns the output along with any generated charts.
+
+**Research mode** — Ask a question. The agent searches the web using DuckDuckGo and synthesizes results with Groq to produce a structured answer.
+
+**Build Agent mode** — Describe an agent. The app generates a standalone Python script saved to `built_agents/`. You can run it directly from the UI or download it.
+
+### Built-in simulations
+- Monte Carlo portfolio simulation
+- Fibonacci sequence with golden ratio convergence
+- Projectile motion physics
+- Compound interest growth chart
+
+### Other features
+- File attachments: PDF, CSV, TXT, Python, JSON (content sent to AI as context)
+- Task history with search and export (JSON/CSV)
+- Generated chart gallery
+- Dark/light theme
+- Voice input (Chrome and Edge only)
+
+---
+
+## What it does NOT do
+
+- It does not self-improve or modify its own code at runtime
+- It does not have persistent memory between server restarts (task history is saved to JSON, solutions are cached in JSON)
+- It does not run code in a sandbox — generated scripts run as your local user
+- It does not support streaming responses
+
+---
+
+## Setup
+
+### Requirements
+- Python 3.12+
+- A free Groq API key from [console.groq.com/keys](https://console.groq.com/keys)
+
+### Install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/prometheus-ai.git
-cd prometheus-ai
-```
+git clone https://github.com/JINZO-AI/prometheus_ai.git
+cd prometheus_ai
 
-### Step 2 — Get your FREE Groq API key
+# Windows
+py -3.12 -m venv .venv
+source .venv/Scripts/activate   # or .venv\Scripts\activate.bat
 
-1. Go to **[console.groq.com/keys](https://console.groq.com/keys)**
-2. Sign up (free) → Create API Key
-3. Copy the key (starts with `gsk_...`)
+# Mac/Linux
+python3 -m venv .venv
+source .venv/bin/activate
 
-### Step 3 — Configure
-
-```bash
-cp .env.example .env
-# Edit .env and add your key:
-# GROQ_KEY=gsk_xxxxxxxxxxxxxxxxxx
-```
-
-### Step 4 — Run setup
-
-**Linux / macOS:**
-```bash
-chmod +x setup.sh
-./setup.sh
-```
-
-**Windows:**
-```cmd
-setup.bat
-```
-
-Or manually:
-```bash
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### Step 5 — Launch
+### Configure
 
 ```bash
+cp .env.example .env
+# Edit .env and set your key:
+# GROQ_KEY=gsk_xxxxxxxxxxxxxxxx
+```
+
+### Run
+
+```bash
+# Windows
+.venv/Scripts/python.exe app.py
+
+# Mac/Linux
 python app.py
 ```
 
-Open **[http://localhost:5000](http://localhost:5000)** 🎉
+Open [http://localhost:5000](http://localhost:5000)
 
 ---
 
-## 🖥️ Web UI Guide
-
-### Chat Modes
-
-| Mode | How to use | Example |
-|------|-----------|---------|
-| ⚡ **Execute** | Run Python code tasks | `Monte Carlo simulation $10k portfolio` |
-| 🔬 **Research** | Web search + AI synthesis | `What is the Riemann Hypothesis?` |
-| 🤖 **Build Agent** | Generate a Python agent file | `a stock price visualizer agent` |
-
-### Navigation
-
-- **AI Chat** — Main chat interface
-- **History** — All past tasks with search/filter
-- **Outputs** — All generated charts and reports
-- **Quick Tasks** — One-click pre-built simulations
-
----
-
-## 🔧 CLI Mode
-
-You can also use the agent directly from the command line:
-
-```bash
-# Activate venv first
-source .venv/bin/activate
-
-# Demo task
-python my_agent.py
-
-# Custom task
-python my_agent.py --goal "Plot first 30 prime numbers"
-
-# Research
-python my_agent.py --research "What is quantum entanglement?"
-
-# Build a sub-agent
-python my_agent.py --build "stock price visualization agent"
-
-# Interactive mode
-python my_agent.py -i
-```
-
----
-
-## 📁 Project Structure
+## Project structure
 
 ```
-prometheus-ai/
-├── app.py                 # Flask web server (all API routes)
-├── my_agent.py            # Prometheus AI engine (Groq-powered)
-├── requirements.txt       # Python dependencies
-├── .env.example           # Environment template
-├── setup.sh               # Linux/Mac setup
-├── setup.bat              # Windows setup
+prometheus_ai/
+├── app.py                   # Flask server — all API routes
+├── my_agent.py              # AI agent logic (Groq + code execution)
+├── requirements.txt
+├── .env.example
 ├── templates/
-│   └── index.html         # Full web UI (single file)
-├── outputs/               # Generated charts & research reports
-├── built_agents/          # AI-generated sub-agent scripts
-├── prometheus_memory/     # Persistent solution cache (JSON)
-└── core_versions/         # Agent version history
+│   └── index.html           # Full web UI (single file, no build step)
+├── outputs/                 # Generated PNG charts and research reports
+├── built_agents/            # Python scripts generated by Build Agent mode
+├── uploads/                 # Temporarily stored user-uploaded files
+└── prometheus_memory/       # tasks.json (history) + solutions.json (cache)
 ```
 
 ---
 
-## 🐙 GitHub Setup Guide
+## API endpoints
 
-### Push to a new GitHub repo
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/status` | Check Groq key, version info |
+| POST | `/api/chat` | Main chat — modes: execute, research, build |
+| POST | `/api/run-agent` | Execute a built agent script |
+| POST | `/api/upload` | Upload a file attachment |
+| GET | `/api/history` | Task history, supports `?q=` search and `?mode=` filter |
+| DELETE | `/api/history/<id>` | Delete a task |
+| POST | `/api/history/clear` | Clear all history |
+| GET | `/api/outputs` | List generated files |
+| DELETE | `/api/outputs/<filename>` | Delete an output file |
+| GET | `/api/stats` | Task counts, success rate, image count |
+| GET/POST | `/api/settings` | Read/write user settings |
+| GET | `/api/export/history` | Download history as `?format=json` or `?format=csv` |
+
+---
+
+## Environment variables
+
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `GROQ_KEY` | Yes | — | Groq API key |
+| `GROQ_API_KEY` | Alternative | — | Same as above (either name works) |
+| `PORT` | No | 5000 | Server port |
+| `FLASK_DEBUG` | No | false | Enable Flask debug mode |
+
+---
+
+## PDF support
+
+PDF text extraction requires an additional library:
 
 ```bash
-# 1. Create a new repo on github.com (don't add README/gitignore — we have them)
-
-# 2. Initialize git in your project folder
-cd prometheus-ai
-git init
-git add .
-git commit -m "feat: PROMETHEUS AI v12.0 — Groq Edition"
-
-# 3. Add your GitHub remote (replace with your URL)
-git remote add origin https://github.com/YOUR_USERNAME/prometheus-ai.git
-
-# 4. Push
-git branch -M main
-git push -u origin main
+pip install pypdf
 ```
 
-### Replace existing repo
-
-```bash
-# If you already have a repo and want to replace it:
-git init
-git add .
-git commit -m "feat: PROMETHEUS AI v12.0 — complete rewrite"
-git remote add origin https://github.com/JINZO-AI/prometheus-ai.git
-git branch -M main
-git push -u origin main --force   # ⚠️ force-push replaces everything
-```
+Without it, attached PDFs will show a warning instead of extracted text.
 
 ---
 
-## ✅ How to Test
+## License
 
-### Test 1 — App starts correctly
-```bash
-python app.py
-# Should print:
-# ╔═══════════════════════════════════╗
-# ║  PROMETHEUS AI v12.0 — Groq      ║
-# ║  http://localhost:5000            ║
-# ╚═══════════════════════════════════╝
-```
-
-### Test 2 — API status
-```bash
-curl http://localhost:5000/api/status
-# Expected: {"groq_key_set": true, "agent_available": true, ...}
-```
-
-### Test 3 — Monte Carlo simulation
-In the web UI:
-1. Select mode **⚡ Execute**
-2. Type: `Monte Carlo simulation of $10,000 portfolio`
-3. Press Enter
-4. Should complete in ~5 seconds with a chart
-
-### Test 4 — Research mode
-1. Select mode **🔬 Research**
-2. Type: `What is the Fibonacci sequence?`
-3. Should return a well-structured text answer
-
-### Test 5 — CLI test
-```bash
-python my_agent.py --goal "First 20 Fibonacci numbers"
-# Should print the sequence and save a chart to outputs/
-```
-
----
-
-## ⚙️ Environment Variables
-
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `GROQ_KEY` | ✅ Yes | Your Groq API key from console.groq.com |
-| `PORT` | Optional | Web server port (default: 5000) |
-| `FLASK_DEBUG` | Optional | Enable debug mode (`true`/`false`) |
-
----
-
-## 🤝 Contributing
-
-1. Fork the repo
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit changes: `git commit -m 'feat: add amazing feature'`
-4. Push to branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-MIT License — free to use, modify, and distribute.
-
----
-
-<div align="center">
-  <strong>Built with Groq Llama 3.3 70B</strong><br/>
-  Free AI API · No credit card needed<br/>
-  <a href="https://console.groq.com/keys">Get your free Groq key →</a>
-</div>
+MIT

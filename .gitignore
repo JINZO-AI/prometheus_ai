@@ -1,0 +1,40 @@
+# Environment
+.env
+*.env.local
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Runtime outputs (keep dirs)
+outputs/*
+!outputs/.gitkeep
+built_agents/*
+!built_agents/.gitkeep
+prometheus_memory/*
+!prometheus_memory/.gitkeep
+core_versions/*
+!core_versions/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log

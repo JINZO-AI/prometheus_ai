@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="200" viewBox="0 0 1200 200">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0085FF;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#9360FF;stop-opacity:1"/>
+    </linearGradient>
+    <clipPath id="wave-clip">
+      <rect width="1200" height="200"/>
+    </clipPath>
+  </defs>
+  <rect width="1200" height="200" fill="url(#grad)"/>
+  <!-- Wave bottom -->
+  <path d="M0,140 C150,180 350,100 600,150 C850,200 1050,120 1200,140 L1200,200 L0,200 Z" fill="#0D1117" opacity="0.95"/>
+  <!-- Small wave -->
+  <path d="M0,160 C200,140 400,175 600,165 C800,155 1000,170 1200,160 L1200,200 L0,200 Z" fill="#0D1117"/>
+  <!-- Lightning bolt icon -->
+  <text x="540" y="90" font-family="Arial,sans-serif" font-size="36" fill="white" opacity="0.9">⚡</text>
+  <!-- Title -->
+  <text x="600" y="92" font-family="Arial Black,Arial,sans-serif" font-size="52" font-weight="900" fill="white" text-anchor="middle" letter-spacing="-1">PROMETHEUS AI</text>
+  <!-- Subtitle -->
+  <text x="600" y="124" font-family="Arial,sans-serif" font-size="17" fill="rgba(255,255,255,0.82)" text-anchor="middle" letter-spacing="0.5">Open-source AI agent for code, research &amp; automation</text>
+</svg>

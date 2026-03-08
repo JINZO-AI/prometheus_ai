@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- ANIMATED BANNER -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0085FF,100:9360FF&height=200&section=header&text=PROMETHEUS%20AI&fontSize=60&fontColor=ffffff&fontAlignY=38&desc=Open-source%20AI%20agent%20for%20code%2C%20research%20%26%20automation&descAlignY=58&descSize=18&animation=fadeIn" width="100%"/>
+<img src="banner.svg" width="100%" alt="PROMETHEUS AI"/>
 
 <!-- ANIMATED TYPING SUBTITLE -->
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Inter&weight=600&size=22&duration=3000&pause=1000&color=0085FF&center=true&vCenter=true&width=600&lines=Run+Python+simulations+in+plain+English;Research+any+topic+with+web+search;Build+%26+run+automated+AI+agents;Powered+by+Groq+%E2%80%94+completely+free)](https://git.io/typing-svg)
@@ -274,7 +274,7 @@ git push origin feature/what-you-are-adding
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:9360FF,100:0085FF&height=100&section=footer" width="100%"/>
+
 
 **Built on the Groq API · Runs fully local · No subscription required**
 

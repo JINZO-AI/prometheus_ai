@@ -165,8 +165,8 @@ Open **[http://localhost:5000](http://localhost:5000)**
 │  Search           │                         │  Chart gallery│
 │  Theme toggle     │  ─────────────────────  │               │
 │                   │  Input bar:             │  Stats:       │
-│                   │  [Attach] [Voice]        │  Tasks        │
-│                   │  [Execute|Research|      │  Success rate │
+│                   │  [Attach] [Voice]       │  Tasks        │
+│                   │  [Execute|Research|     │  Success rate │
 │                   │   Build Agent]  [Send]  │  Charts       │
 └─────────────────────────────────────────────────────────────┘
 ```
